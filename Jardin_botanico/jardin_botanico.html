@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0"/>
+  <title>Jardín Botánico COBACH 01 BCS</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+<!-- 
+     barra de navegacion
+ -->
+<header class="navbar" id="navbar">
+  <div class="nav-brand">
+    <img src="Logotipo_COBACH.png" alt="Logo COBACH" class="nav-logo" />
+    <span class="nav-title">Jardín Botánico<br><em>COBACH 01 BCS</em></span>
+  </div>
+
+  <div class="nav-search">
+    <input type="text" id="searchInput" placeholder="Buscar planta o animal…" autocomplete="off"/>
+    <button onclick="doSearch()" aria-label="Buscar">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    </button>
+    <ul id="searchResults" class="search-dropdown"></ul>
+  </div>
+
+  <nav class="nav-links">
+    <a href="#nosotros">Nosotros</a>
+    <a href="#ubicacion">Ubicación</a>
+    <a href="#jardin">Jardín</a>
+    <a href="#animales">Animales</a>
+    <a href="#contacto">Contáctenos</a>
+  </nav>
+
+  <button class="hamburger" id="hamburger" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#nosotros"  onclick="closeMobile()">Nosotros</a>
+  <a href="#ubicacion" onclick="closeMobile()">Ubicación</a>
+  <a href="#jardin"    onclick="closeMobile()">Jardín</a>
+  <a href="#animales"  onclick="closeMobile()">Animales</a>
+  <a href="#contacto"  onclick="closeMobile()">Contáctenos</a>
+</div>
+
+<!-- 
+     HERO "bienvenida espectacular"
+ -->
+<section class="hero" id="inicio">
+  <div class="hero-bg">
+    <img src="jardin botanico entrada.jpeg" alt="Entrada Jardín Botánico" class="hero-img"/>
+    <div class="hero-overlay"></div>
+  </div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Plantel 01 · La Paz, BCS</p>
+    <h1 class="hero-title">Jardín<br><span>Botánico</span></h1>
+    <p class="hero-sub">Un santuario de flora y fauna sudcaliforniana en el corazón del COBACH</p>
+    <a href="#jardin" class="hero-cta">Explorar jardín</a>
+  </div>
+  <div class="hero-scroll-hint">
+    <span>Desliza</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<!-- 
+     NOSOTROS "quienes somos y por que este proyecto"
+ -->
+<section class="section nosotros" id="nosotros">
+  <div class="section-inner two-col">
+    <div class="text-block reveal">
+      <span class="tag">Sobre nosotros</span>
+      <h2>Un espacio vivo<br>de aprendizaje</h2>
+      <p>El Jardín Botánico del COBACH Plantel 01 en La Paz, Baja California Sur, es un proyecto educativo y de conservación que exhibe la rica biodiversidad de la flora desértica y tropical de la península.</p>
+      <p>Aquí conviven especies endémicas del desierto sonorense con plantas del matorral xerófito sudcaliforniano, convirtiéndose en un laboratorio vivo para la comunidad estudiantil.</p>
+    </div>
+    <div class="stat-grid reveal">
+      <div class="stat-card"><span class="stat-num">20+</span><span class="stat-label">Especies de plantas</span></div>
+      <div class="stat-card"><span class="stat-num">12+</span><span class="stat-label">Animales avistados</span></div>
+      <div class="stat-card"><span class="stat-num">BCS</span><span class="stat-label">Baja California Sur</span></div>
+      <div class="stat-card"><span class="stat-num">∞</span><span class="stat-label">Pasión por la naturaleza</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 
+     JARDÍN — PLANTAS "la parte mas importante del proyecto, las plantas que tenemos y sus datos curiosos"
+ -->
+<section class="section jardin" id="jardin">
+  <div class="section-header reveal">
+    <span class="tag">Flora</span>
+    <h2>Nuestras Plantas</h2>
+    <p class="section-desc">Conoce las especies vegetales que habitan nuestro jardín y los secretos que guardan.</p>
+  </div>
+
+  <div class="plants-grid">
+
+    <!-- CARDÓN -->
+    <article class="plant-card reveal" data-search="cardon cactus gigante baja california">
+      <div class="plant-img-wrap">
+        <img src="Cardon planta.jpg" alt="Cardón" loading="lazy"/>
+        <span class="plant-badge">Endémica BCS</span>
+      </div>
+      <div class="plant-info">
+        <h3>Cardón</h3>
+        <p class="plant-latin"><em>Pachycereus pringlei</em></p>
+        <div class="desc-row">
+          <p class="plant-desc">El cactus más grande del mundo puede superar los 20 m de altura y vivir más de 300 años. Es el símbolo vegetal por excelencia de Baja California Sur.</p>
+          <button class="tts-btn" aria-label="Escuchar descripción" onclick="ttsPlay(this)">🎧</button>
+        </div>
+        <div class="tts-volume-row">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+          <input type="range" class="tts-vol" min="0" max="1" step="0.05" value="1" oninput="setVol(this)"/>
+        </div>
+        <details>
+          <summary><span class="details-label">Datos curiosos</span><span class="details-arrow">▸</span></summary>
+          <ul><li>Sus semillas son dispersadas por murciélagos y aves.</li><li>El tronco muerto se usa como madera de construcción.</li><li>Puede almacenar hasta 3,000 litros de agua.</li></ul>
+        </details>
+      </div>
+    </article>
+
+    <!-- CARDÓN PELÓN -->
+    <article class="plant-card reveal" data-search="cardon pelon senita cactus cerdas grises columnar">
+      <div class="plant-img-wrap">
+        <img src="cardon pelon planta.jpg" alt="Cardón Pelón" loading="lazy"/>
+        <span class="plant-badge">Endémica</span>
+      </div>
+      <div class="plant-info">
+        <h3>Cardón Pelón</h3>
+        <p class="plant-latin"><em>Pachycereus schottii</em></p>
+        <div class="desc-row">
+          <p class="plant-desc">También llamado "senita", se distingue por sus cerdas grisáceas en la parte superior. Más esbelto que el cardón gigante, habita zonas áridas costeras.</p>
+          <button class="tts-btn" aria-label="Escuchar descripción" onclick="ttsPlay(this)">🎧</button>
+        </div>
+        <div class="tts-volume-row">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+          <input type="range" class="tts-vol" min="0" max="1" step="0.05" value="1" oninput="setVol(this)"/>
+        </div>
+        <details>
+          <summary><span class="details-label">Datos curiosos</span><span class="details-arrow">▸</span></summary>
+          <ul><li>Sus flores solo abren de noche y tienen polinizador especializado.</li><li>Las cerdas grises solo aparecen en la zona adulta del tallo.</li><li>Su tallo joven es comestible en algunas comunidades de Sonora.</li></ul>
+        </details>
+      </div>
+    </article>
+
+    <!-- PITAYA DULCE -->
+    <article class="plant-card reveal" data-search="pitaya dulce fruta cactus roja">
+      <div class="plant-img-wrap">
+        <img src="pitaya Dulce planta.jpg" alt="Pitaya Dulce" loading="lazy"/>
+        <span class="plant-badge">Frutal nativo</span>
+      </div>
+      <div class="plant-info">
+        <h3>Pitaya Dulce</h3>
+        <p class="plant-latin"><em>Stenocereus thurberi</em></p>
+        <div class="desc-row">
+          <p class="plant-desc">Columnar y elegante, produce una fruta roja de pulpa dulce que fue alimento fundamental de los pueblos indígenas de la península durante milenios.</p>
+          <button class="tts-btn" aria-label="Escuchar descripción" onclick="ttsPlay(this)">🎧</button>
+        </div>
+        <div class="tts-volume-row">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+          <input type="range" class="tts-vol" min="0" max="1" step="0.05" value="1" oninput="setVol(this)"/>
+        </div>
+        <details>
+          <summary><span class="details-label">Datos curiosos</span><span class="details-arrow">▸</span></summary>
+          <ul><li>La temporada de fruta dura apenas unas semanas en verano.</li><li>Los guaycuras y pericúes organizaban fiestas de la pitaya.</li><li>Su jugo fermentado producía un licor ceremonial.</li></ul>
+        </details>
+      </div>
+    </article>
+
+    <!-- PITAYA AGRIA -->
+    <article class="plant-card reveal" data-search="pitaya agria cactus acido trepador">
+      <div class="plant-img-wrap">
+        <img src="pitaya agria.jpg" alt="Pitaya Agria" loading="lazy"/>
+        <span class="plant-badge">Silvestre</span>
+      </div>
+      <div class="plant-info">
+        <h3>Pitaya Agria</h3>
+        <p class="plant-latin"><em>Stenocereus gummosus</em></p>
+        <div class="desc-row">
+          <p class="plant-desc">Cactus de tallos trepadores con fruto ácido. Los pueblos originarios lo usaban para aturdir peces en pozas, gracias a las saponinas de su pulpa.</p>
+          <button class="tts-btn" aria-label="Escuchar descripción" onclick="ttsPlay(this)">🎧</button>
+        </div>
+        <div class="tts-volume-row">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+          <input type="range" class="tts-vol" min="0" max="1" step="0.05" value="1" oninput="setVol(this)"/>
+        </div>
+        <details>
+          <summary><span class="details-label">Datos curiosos</span><span class="details-arrow">▸</span></summary>
+          <ul><li>Las saponinas de su pulpa se usaban para aturdir peces en pozas.</li><li>Sus flores rosas abren de noche y duran muy poco.</li><li>Sus espinas pueden medir hasta 4 cm de largo.</li></ul>
+        </details>
+      </div>
+    </article>
+
+    <!-- FLOR DE PITAYA -->
+    <article class="plant-card reveal" data-search="flor pitaya nocturna blanca cactus">
+      <div class="plant-img-wrap">
+        <img src="flor de pitaya planta.webp" alt="Flor de Pitaya" loading="lazy"/>
+        <span class="plant-badge">Flor nocturna</span>
+      </div>
+      <div class="plant-info">
+        <h3>Flor de Pitaya</h3>
+        <p class="plant-latin"><em>Stenocereus thurberi (flor)</em></p>
+        <div class="desc-row">
+          <p class="plant-desc">Una de las flores más espectaculares del desierto. Abre únicamente de noche, mostrando pétalos blancos inmaculados que atraen a murciélagos polinizadores.</p>
+          <button class="tts-btn" aria-label="Escuchar descripción" onclick="ttsPlay(this)">🎧</button>
+        </div>
+        <div class="tts-volume-row">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+          <input type="range" class="tts-vol" min="0" max="1" step="0.05" value="1" oninput="setVol(this)"/>
+        </div>
+        <details>
+          <summary><span class="details-label">Datos curiosos</span><span class="details-arrow">▸</span></summary>
+          <ul><li>Cada flor dura solo una noche.</li><li>El perfume nocturno se percibe a metros de distancia.</li><li>Símbolo de la efímera belleza del desierto.</li></ul>
+        </details>
+      </div>
+    </article>
+
+    <!-- NOPAL hummm de echo tengo una historia bien curiosa, pero no la van a saber por que soy malvado. -->
+    <article class="plant-card reveal" data-search="nopal tuna cactus paleta comestible">
+      <div class="plant-img-wrap">
+        <img src="nopales planta.jpg" alt="Nopal" loading="lazy"/>
+        <span class="plant-badge">Superalimento</span>
+      </div>
+      <div class="plant-info">
+        <h3>Nopal</h3>
+        <p class="plant-latin"><em>Opuntia spp.</em></p>
+        <div class="desc-row">
+          <p class="plant-desc">Icono de la cultura mexicana con usos alimenticios, medicinales y ornamentales. Sus pencas y tunas han sido consumidas desde tiempos prehispánicos.</p>
+          <button class="tts-btn" aria-label="Escuchar descripción" onclick="ttsPlay(this)">🎧</button>
+        </div>
+        <div class="tts-volume-row">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+          <input type="range" class="tts-vol" min="0" max="1" step="0.05" value="1" oninput="setVol(this)"/>
+        </div>
+        <details>
+          <summary><span class="details-label">Datos curiosos</span><span class="details-arrow">▸</span></summary>
+          <ul><li>Tiene propiedades hipoglucemiantes documentadas científicamente.</li><li>Sus espinas eran usadas como agujas por pueblos indígenas.</li><li>La grana cochinilla vive en sus pencas y produce tinte rojo natural.</li></ul>
+        </details>
+      </div>
+    </article>
+
+    <!-- JOJOBA "planta olvidada por dios a mi gusto" -->
+    <article class="plant-card reveal" data-search="jojoba aceite cosmetico arbusto desierto">
+      <div class="plant-img-wrap">
+        <img src="jojoba planta.jpg" alt="Jojoba" loading="lazy"/>
+        <span class="plant-badge">Oro líquido</span>
+      </div>
+      <div class="plant-info">
+        <h3>Jojoba</h3>
+        <p class="plant-latin"><em>Simmondsia chinensis</em></p>
+        <div class="desc-row">
+          <p class="plant-desc">Arbusto resistente cuyas semillas producen una cera líquida única en el reino vegetal, con propiedades cosméticas y lubricantes excepcionales.</p>
+          <button class="tts-btn" aria-label="Escuchar descripción" onclick="ttsPlay(this)">🎧</button>
+        </div>
+        <div class="tts-volume-row">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+          <input type="range" class="tts-vol" min="0" max="1" step="0.05" value="1" oninput="setVol(this)"/>
+        </div>
+        <details>
+          <summary><span class="details-label">Datos curiosos</span><span class="details-arrow">▸</span></summary>
+          <ul><li>Es el único vegetal que produce cera líquida en lugar de aceite.</li><li>Fue propuesta como sustituto del aceite de ballena en los 70s.</li><li>Puede vivir más de 200 años en condiciones áridas.</li></ul>
+        </details>
+      </div>
+    </article>
+
+    <!-- YUCCA BACCATA  "no coman esto... enserio"-->
+    <article class="plant-card reveal" data-search="yucca datilillo agave fibra palma">
+      <div class="plant-img-wrap">
+        <img src="yucca baccata planta.jpg" alt="Yucca Baccata" loading="lazy"/>
+        <span class="plant-badge">Fibra tradicional</span>
+      </div>
+      <div class="plant-info">
+        <h3>Yucca Baccata</h3>
+        <p class="plant-latin"><em>Yucca baccata</em></p>
+        <div class="desc-row">
+          <p class="plant-desc">El "datilillo" produce frutos dulces comestibles y fibras resistentes que los pueblos originarios usaban para tejer cestas, sandalias y cuerdas.</p>
+          <button class="tts-btn" aria-label="Escuchar descripción" onclick="ttsPlay(this)">🎧</button>
+        </div>
+        <div class="tts-volume-row">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+          <input type="range" class="tts-vol" min="0" max="1" step="0.05" value="1" oninput="setVol(this)"/>
+        </div>
+        <details>
+          <summary><span class="details-label">Datos curiosos</span><span class="details-arrow">▸</span></summary>
+          <ul><li>Tiene una relación simbiótica obligada con la polilla Tegeticula.</li><li>Su raíz produce saponinas usadas como jabón natural.</li><li>Los frutos se pueden comer crudos, asados o deshidratados.</li></ul>
+        </details>
+      </div>
+    </article>
+
+    <!-- CIRUELO DE MONTE -->
+    <article class="plant-card reveal" data-search="ciruelo monte fruta silvestre arbol">
+      <div class="plant-img-wrap">
+        <img src="Ciruelo de monte planta.jpg" alt="Ciruelo de Monte" loading="lazy"/>
+        <span class="plant-badge">Árbol nativo</span>
+      </div>
+      <div class="plant-info">
+        <h3>Ciruelo de Monte</h3>
+        <p class="plant-latin"><em>Cyrtocarpa edulis</em></p>
+        <div class="desc-row">
+          <p class="plant-desc">Árbol caducifolio de zonas tropicales secas de BCS. Sus frutos amarillos son consumidos por fauna local y comunidades rurales en temporada.</p>
+          <button class="tts-btn" aria-label="Escuchar descripción" onclick="ttsPlay(this)">🎧</button>
+        </div>
+        <div class="tts-volume-row">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+          <input type="range" class="tts-vol" min="0" max="1" step="0.05" value="1" oninput="setVol(this)"/>
+        </div>
+        <details>
+          <summary><span class="details-label">Datos curiosos</span><span class="details-arrow">▸</span></summary>
+          <ul><li>Es pariente cercano del mango y el jobo.</li><li>Pierde sus hojas en temporada seca como estrategia de supervivencia.</li><li>La fauna silvestre depende de sus frutos estacionalmente.</li></ul>
+        </details>
+      </div>
+    </article>
+
+    <!-- BUGANVILIA  "y baila lento flor moraadaaaa que me recuerdas a mi amadaaaa"-->
+    <article class="plant-card reveal" data-search="buganvilia bugambilia flores ornamental">
+      <div class="plant-img-wrap">
+        <img src="Buganvilia planta.jpg" alt="Buganvilia" loading="lazy"/>
+        <span class="plant-badge">Ornamental</span>
+      </div>
+      <div class="plant-info">
+        <h3>Buganvilia</h3>
+        <p class="plant-latin"><em>Bougainvillea glabra</em></p>
+        <div class="desc-row">
+          <p class="plant-desc">Las llamativas "flores" son en realidad brácteas coloreadas que rodean la flor verdadera. Símbolo festivo de La Paz, puede florecer todo el año.</p>
+          <button class="tts-btn" aria-label="Escuchar descripción" onclick="ttsPlay(this)">🎧</button>
+        </div>
+        <div class="tts-volume-row">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+          <input type="range" class="tts-vol" min="0" max="1" step="0.05" value="1" oninput="setVol(this)"/>
+        </div>
+        <details>
+          <summary><span class="details-label">Datos curiosos</span><span class="details-arrow">▸</span></summary>
+          <ul><li>Su nombre honra al explorador francés Louis Antoine de Bougainville.</li><li>Puede florecer todo el año en climas cálidos.</li><li>Las brácteas secas se usan en medicina tradicional contra la tos.</li></ul>
+        </details>
+      </div>
+    </article>
+
+    <!-- CACTUS  "me pregunto a que sabran"-->
+    <article class="plant-card reveal" data-search="cactus biznaga espinas desierto suculenta">
+      <div class="plant-img-wrap">
+        <img src="captus planta.jpg" alt="Cactus" loading="lazy"/>
+        <span class="plant-badge">Suculenta</span>
+      </div>
+      <div class="plant-info">
+        <h3>Cactus del Jardín</h3>
+        <p class="plant-latin"><em>Cactaceae spp.</em></p>
+        <div class="desc-row">
+          <p class="plant-desc">Representante de la familia Cactaceae. Sus espinas son hojas modificadas que reducen la pérdida de agua y protegen de herbívoros en el desierto extremo.</p>
+          <button class="tts-btn" aria-label="Escuchar descripción" onclick="ttsPlay(this)">🎧</button>
+        </div>
+        <div class="tts-volume-row">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+          <input type="range" class="tts-vol" min="0" max="1" step="0.05" value="1" oninput="setVol(this)"/>
+        </div>
+        <details>
+          <summary><span class="details-label">Datos curiosos</span><span class="details-arrow">▸</span></summary>
+          <ul><li>Los cactus solo existen nativamente en América.</li><li>Sus raíces superficiales absorben lluvia casi al instante.</li><li>Algunas especies florecen una sola vez en décadas.</li></ul>
+        </details>
+      </div>
+    </article>
+
+    <!-- CHOYA BARBONA -->
+    <article class="plant-card reveal" data-search="choya barbona cactus espinas anzuelo">
+      <div class="plant-img-wrap">
+        <img src="choya barbona planta.jpg" alt="Choya Barbona" loading="lazy"/>
+        <span class="plant-badge">Espinosa</span>
+      </div>
+      <div class="plant-info">
+        <h3>Choya Barbona</h3>
+        <p class="plant-latin"><em>Cylindropuntia cholla</em></p>
+        <div class="desc-row">
+          <p class="plant-desc">Sus segmentos con espinas en forma de anzuelo se adhieren fácilmente a ropa y pelaje, convirtiéndola en maestra de la dispersión vegetal.</p>
+          <button class="tts-btn" aria-label="Escuchar descripción" onclick="ttsPlay(this)">🎧</button>
+        </div>
+        <div class="tts-volume-row">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+          <input type="range" class="tts-vol" min="0" max="1" step="0.05" value="1" oninput="setVol(this)"/>
+        </div>
+        <details>
+          <summary><span class="details-label">Datos curiosos</span><span class="details-arrow">▸</span></summary>
+          <ul><li>Sus segmentos caídos enraízan generando nuevas plantas.</li><li>Es refugio de aves que anidan entre sus ramas espinosas.</li><li>Algunos murciélagos se cuelgan de ella para descansar.</li></ul>
+        </details>
+      </div>
+    </article>
+
+    <!-- GOBERNADORA "cuando busque esta planta me salieron varias imagenes curiosas, no quiero hablar de eso."-->
+    <article class="plant-card reveal" data-search="gobernadora creosota arbusto medicinal lluvia olor">
+      <div class="plant-img-wrap">
+        <img src="gobernadora planta.jpg" alt="Gobernadora" loading="lazy"/>
+        <span class="plant-badge">Medicinal</span>
+      </div>
+      <div class="plant-info">
+        <h3>Gobernadora</h3>
+        <p class="plant-latin"><em>Larrea tridentata</em></p>
+        <div class="desc-row">
+          <p class="plant-desc">Arbusto dominante del desierto norteamericano. Produce el inconfundible aroma a tierra mojada tras la lluvia. Una de las plantas más longevas del planeta.</p>
+          <button class="tts-btn" aria-label="Escuchar descripción" onclick="ttsPlay(this)">🎧</button>
+        </div>
+        <div class="tts-volume-row">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+          <input type="range" class="tts-vol" min="0" max="1" step="0.05" value="1" oninput="setVol(this)"/>
+        </div>
+        <details>
+          <summary><span class="details-label">Datos curiosos</span><span class="details-arrow">▸</span></summary>
+          <ul><li>El individuo "King Clone" en California tiene más de 11,000 años.</li><li>Usada en medicina tradicional para artritis y resfriados.</li><li>Su resina protege sus hojas de la deshidratación extrema.</li></ul>
+        </details>
+      </div>
+    </article>
+
+    <!-- HUIZACHE -->
+    <article class="plant-card reveal" data-search="huizache acacia flor amarilla aromática">
+      <div class="plant-img-wrap">
+        <img src="huizache planta.jpg" alt="Huizache" loading="lazy"/>
+        <span class="plant-badge">Aromática</span>
+      </div>
+      <div class="plant-info">
+        <h3>Huizache</h3>
+        <p class="plant-latin"><em>Vachellia farnesiana</em></p>
+        <div class="desc-row">
+          <p class="plant-desc">Arbusto espinoso de flores amarillas con aroma intenso usado en la elaboración de perfumes de lujo europeos desde el siglo XVII.</p>
+          <button class="tts-btn" aria-label="Escuchar descripción" onclick="ttsPlay(this)">🎧</button>
+        </div>
+        <div class="tts-volume-row">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+          <input type="range" class="tts-vol" min="0" max="1" step="0.05" value="1" oninput="setVol(this)"/>
+        </div>
+        <details>
+          <summary><span class="details-label">Datos curiosos</span><span class="details-arrow">▸</span></summary>
+          <ul><li>Su fragancia se usa en perfumes de lujo europeos desde el siglo XVII.</li><li>Su corteza tiene taninos usados para curtir pieles.</li><li>Es fuente de néctar clave para abejas y mariposas del jardín.</li></ul>
+        </details>
+      </div>
+    </article>
+
+    <!-- LOMBOY "femboy..."-->
+    <article class="plant-card reveal" data-search="lomboy jatropha arbusto rojo sarcocaule peninsular">
+      <div class="plant-img-wrap">
+        <img src="Lomboy planta.jpg" alt="Lomboy" loading="lazy"/>
+        <span class="plant-badge">Endémica</span>
+      </div>
+      <div class="plant-info">
+        <h3>Lomboy</h3>
+        <p class="plant-latin"><em>Jatropha cinerea</em></p>
+        <div class="desc-row">
+          <p class="plant-desc">Arbusto sarcocaule con tallos gruesos que almacenan agua. Florece en rojo intenso aun sin hojas, un espectáculo único del desierto peninsular.</p>
+          <button class="tts-btn" aria-label="Escuchar descripción" onclick="ttsPlay(this)">🎧</button>
+        </div>
+        <div class="tts-volume-row">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+          <input type="range" class="tts-vol" min="0" max="1" step="0.05" value="1" oninput="setVol(this)"/>
+        </div>
+        <details>
+          <summary><span class="details-label">Datos curiosos</span><span class="details-arrow">▸</span></summary>
+          <ul><li>Su látex era usado como pegamento natural artesanal.</li><li>Pertenece al grupo de plantas sarcocaules, únicas de BCS.</li><li>Las aves visitan sus flores rojas como fuente de néctar.</li></ul>
+        </details>
+      </div>
+    </article>
+
+    <!-- GARAMBULLO -->
+    <article class="plant-card reveal" data-search="garambullo cactus candelabro bayas comestibles">
+      <div class="plant-img-wrap">
+        <img src="garambullo planta.jpg" alt="Garambullo" loading="lazy"/>
+        <span class="plant-badge">Frutal silvestre</span>
+      </div>
+      <div class="plant-info">
+        <h3>Garambullo</h3>
+        <p class="plant-latin"><em>Myrtillocactus geometrizans</em></p>
+        <div class="desc-row">
+          <p class="plant-desc">Cactus arborescente en candelabro que produce pequeñas bayas comestibles de sabor dulce-ácido, alimento clave para aves y mamíferos del desierto.</p>
+          <button class="tts-btn" aria-label="Escuchar descripción" onclick="ttsPlay(this)">🎧</button>
+        </div>
+        <div class="tts-volume-row">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+          <input type="range" class="tts-vol" min="0" max="1" step="0.05" value="1" oninput="setVol(this)"/>
+        </div>
+        <details>
+          <summary><span class="details-label">Datos curiosos</span><span class="details-arrow">▸</span></summary>
+          <ul><li>Su forma en candelabro es icónica del paisaje desértico de México.</li><li>Los frutos se comen frescos o en dulce tradicional.</li><li>Tiene uso ornamental y ceremonial en comunidades indígenas.</li></ul>
+        </details>
+      </div>
+    </article>
+
+    <!-- CARAMBULLO -->
+    <article class="plant-card reveal" data-search="carambullo cactus endémico peninsular columnar">
+      <div class="plant-img-wrap">
+        <img src="carambullo planta.jpg" alt="Carambullo" loading="lazy"/>
+        <span class="plant-badge">Endémico</span>
+      </div>
+      <div class="plant-info">
+        <h3>Carambullo</h3>
+        <p class="plant-latin"><em>Myrtillocactus cochal</em></p>
+        <div class="desc-row">
+          <p class="plant-desc">Endémico de la Península de Baja California. Similar al garambullo pero de mayor tamaño y costillas más pronunciadas. Sus frutos son consumidos por fauna y comunidades locales.</p>
+          <button class="tts-btn" aria-label="Escuchar descripción" onclick="ttsPlay(this)">🎧</button>
+        </div>
+        <div class="tts-volume-row">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+          <input type="range" class="tts-vol" min="0" max="1" step="0.05" value="1" oninput="setVol(this)"/>
+        </div>
+        <details>
+          <summary><span class="details-label">Datos curiosos</span><span class="details-arrow">▸</span></summary>
+          <ul><li>Endémico únicamente de la Península de Baja California.</li><li>Sus frutos tienen mayor tamaño que los del garambullo común.</li><li>Especie en vigilancia por pérdida de hábitat.</li></ul>
+        </details>
+      </div>
+    </article>
+
+    <!-- TOROTO NEGRO  "tenemos negro, blanco, y rojo, solo falta el azul y verde para tener todos los colores de TOROTO"-->
+    <article class="plant-card reveal" data-search="toroto negro arbusto matorral sarcocaule bcs">
+      <div class="plant-img-wrap">
+        <img src="toroto negro.jpg" alt="Toroto Negro" loading="lazy"/>
+        <span class="plant-badge">Matorral</span>
+      </div>
+      <div class="plant-info">
+        <h3>Toroto Negro</h3>
+        <p class="plant-latin"><em>Jatropha cinerea var.</em></p>
+        <div class="desc-row">
+          <p class="plant-desc">Arbusto del matorral sarcocaule sudcaliforniano con ramas oscuras y carnosas, reflejo de su adaptación a la sequía extrema de la región.</p>
+          <button class="tts-btn" aria-label="Escuchar descripción" onclick="ttsPlay(this)">🎧</button>
+        </div>
+        <div class="tts-volume-row">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+          <input type="range" class="tts-vol" min="0" max="1" step="0.05" value="1" oninput="setVol(this)"/>
+        </div>
+        <details>
+          <summary><span class="details-label">Datos curiosos</span><span class="details-arrow">▸</span></summary>
+          <ul><li>Almacena agua en sus tallos durante la temporada de lluvias.</li><li>Sus flores atraen insectos polinizadores del desierto.</li><li>Forma parte de comunidades vegetales todavía poco estudiadas.</li></ul>
+        </details>
+      </div>
+    </article>
+
+    <!-- TOROTO ROJO -->
+    <article class="plant-card reveal" data-search="toroto rojo flor colibri arbusto peninsular">
+      <div class="plant-img-wrap">
+        <img src="toroto rojo planta.jpg" alt="Toroto Rojo" loading="lazy"/>
+        <span class="plant-badge">Vistosa</span>
+      </div>
+      <div class="plant-info">
+        <h3>Toroto Rojo</h3>
+        <p class="plant-latin"><em>Jatropha cuneata</em></p>
+        <div class="desc-row">
+          <p class="plant-desc">Sus flores rojas llaman la atención de colibríes y mariposas. El contraste entre sus flores vívidas y el paisaje árido lo hace uno de los arbustos más fotogénicos del jardín.</p>
+          <button class="tts-btn" aria-label="Escuchar descripción" onclick="ttsPlay(this)">🎧</button>
+        </div>
+        <div class="tts-volume-row">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+          <input type="range" class="tts-vol" min="0" max="1" step="0.05" value="1" oninput="setVol(this)"/>
+        </div>
+        <details>
+          <summary><span class="details-label">Datos curiosos</span><span class="details-arrow">▸</span></summary>
+          <ul><li>Sus tallos carnosos almacenan agua durante la sequía.</li><li>Sus ramas son usadas en artesanía y construcción ligera.</li><li>Atrae activamente al Colibrí de Xantus endémico de BCS.</li></ul>
+        </details>
+      </div>
+    </article>
+
+    <!-- VIEJITO "tan viejito que esta escrito con mis ultimas fuerzas"-->
+    <article class="plant-card reveal" data-search="viejito cactus pelos blancos canas anciano cephalocereus">
+      <div class="plant-img-wrap">
+        <img src="viejito planta.jpg" alt="Viejito" loading="lazy"/>
+        <span class="plant-badge">Inusual</span>
+      </div>
+      <div class="plant-info">
+        <h3>Viejito</h3>
+        <p class="plant-latin"><em>Cephalocereus senilis</em></p>
+        <div class="desc-row">
+          <p class="plant-desc">Su cubierta de largos pelos blancos le da el aspecto inconfundible de un anciano. Estos "pelos" son espinas modificadas que protegen al cactus del calor y el frío extremos.</p>
+          <button class="tts-btn" aria-label="Escuchar descripción" onclick="ttsPlay(this)">🎧</button>
+        </div>
+        <div class="tts-volume-row">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+          <input type="range" class="tts-vol" min="0" max="1" step="0.05" value="1" oninput="setVol(this)"/>
+        </div>
+        <details>
+          <summary><span class="details-label">Datos curiosos</span><span class="details-arrow">▸</span></summary>
+          <ul><li>Puede tardar décadas en alcanzar su tamaño adulto.</li><li>Sus flores rosas solo aparecen de noche y cerca de la cima.</li><li>Los pelos reflejan el sol y regulan la temperatura del tallo.</li></ul>
+        </details>
+      </div>
+    </article>
+
+  </div><!-- /plants-grid -->
+
+  <!-- CARRUSEL "reciclaje de arriba xdxdx,no pienso hacer esto denuevo" -->
+  <div class="section-header reveal" style="margin-top:5rem">
+    <span class="tag">Paisaje</span>
+    <h2>El Desierto del Jardín</h2>
+    <p class="section-desc">Recorrido visual por los rincones desérticos del espacio.</p>
+  </div>
+  <div class="carousel-wrapper reveal">
+    <div class="carousel" id="carousel">
+      <div class="carousel-track" id="carouselTrack">
+        <div class="carousel-slide"><img src="jardin decertico1.jpg" alt="Jardín desértico 1" loading="lazy"/></div>
+        <div class="carousel-slide"><img src="jardin decertico2.jpg" alt="Jardín desértico 2" loading="lazy"/></div>
+        <div class="carousel-slide"><img src="jardin decertico3.jpg" alt="Jardín desértico 3" loading="lazy"/></div>
+        <div class="carousel-slide"><img src="jardin decertico4.jpg" alt="Jardín desértico 4" loading="lazy"/></div>
+        <div class="carousel-slide"><img src="jardin decertico5.jpg" alt="Jardín desértico 5" loading="lazy"/></div>
+        <div class="carousel-slide"><img src="jardin decertico6.jpg" alt="Jardín desértico 6" loading="lazy"/></div>
+        <div class="carousel-slide"><img src="jardin decertico7.jpg" alt="Jardín desértico 7" loading="lazy"/></div>
+        <div class="carousel-slide"><img src="arbol con casas de pajaros1.jpg" alt="Árbol con casas de pájaros" loading="lazy"/></div>
+      </div>
+    </div>
+    <button class="carousel-btn prev" id="prevBtn" aria-label="Anterior">&#8592;</button>
+    <button class="carousel-btn next" id="nextBtn" aria-label="Siguiente">&#8594;</button>
+    <div class="carousel-dots" id="carouselDots"></div>
+  </div>
+
+</section>
+
+<!-- 
+     ANIMALES "solo poner especies que esten en la prepa"
+ -->
+<section class="section animales-section" id="animales">
+  <div class="section-header reveal">
+    <span class="tag">Fauna avistada</span>
+    <h2>Animales del Jardín</h2>
+    <p class="section-desc">Estos animales han sido avistados en el área del jardín botánico. No están en cautiverio — son visitantes silvestres de nuestro entorno natural.</p>
+  </div>
+
+  <!-- AVES -->
+  <div class="animal-category reveal">
+    <div class="animal-category-header">
+      <span class="animal-cat-icon">🐦</span>
+      <h3>Aves</h3>
+    </div>
+    <div class="plants-grid">
+
+      <article class="plant-card animal-card reveal" data-search="aguila pescadora rapaz ave vuelo">
+        <div class="plant-img-wrap">
+          <img src="Águila pescadora o Aguililla aura animal.jpg" alt="Águila Pescadora" loading="lazy"/>
+          <span class="plant-badge avistado-badge">Avistada</span>
+        </div>
+        <div class="plant-info">
+          <h3>Águila Pescadora</h3>
+          <p class="plant-latin"><em>Pandion haliaetus</em> · Ave rapaz</p>
+          <div class="desc-row">
+            <p class="plant-desc">Ave rapaz de gran envergadura avistada sobrevolando el jardín. Se caracteriza por su distintiva máscara oscura y su habilidad para capturar peces en vuelo en picado.</p>
+            <button class="tts-btn" aria-label="Escuchar descripción" onclick="ttsPlay(this)">🎧</button>
+          </div>
+          <div class="tts-volume-row">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+            <input type="range" class="tts-vol" min="0" max="1" step="0.05" value="1" oninput="setVol(this)"/>
+          </div>
+          <details>
+            <summary><span class="details-label">Datos curiosos</span><span class="details-arrow">▸</span></summary>
+            <ul><li>Puede zambullirse a más de 1 metro de profundidad para atrapar peces.</li><li>Sus garras tienen espinas especiales para sujetar presas resbaladizas.</li><li>Migra miles de kilómetros entre áreas de reproducción y alimentación.</li></ul>
+          </details>
+        </div>
+      </article>
+
+      <article class="plant-card animal-card reveal" data-search="colibri xantus endémico BCS polinizador">
+        <div class="plant-img-wrap">
+          <img src="Colibrí de Xantus animla.jpg" alt="Colibrí de Xantus" loading="lazy"/>
+          <span class="plant-badge avistado-badge">Avistado</span>
+        </div>
+        <div class="plant-info">
+          <h3>Colibrí de Xantus</h3>
+          <p class="plant-latin"><em>Basilinna xantusii</em> · Ave</p>
+          <div class="desc-row">
+            <p class="plant-desc">Pequeño colibrí endémico de la Península de Baja California, avistado frecuentemente visitando las flores del jardín. Su presencia indica buena salud del ecosistema floral.</p>
+            <button class="tts-btn" aria-label="Escuchar descripción" onclick="ttsPlay(this)">🎧</button>
+          </div>
+          <div class="tts-volume-row">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+            <input type="range" class="tts-vol" min="0" max="1" step="0.05" value="1" oninput="setVol(this)"/>
+          </div>
+          <details>
+            <summary><span class="details-label">Datos curiosos</span><span class="details-arrow">▸</span></summary>
+            <ul><li>Puede batir sus alas hasta 80 veces por segundo.</li><li>Es polinizador clave de varias plantas del jardín.</li><li>Lleva el nombre del naturalista húngaro John Xantus de Vesey.</li></ul>
+          </details>
+        </div>
+      </article>
+
+      <article class="plant-card animal-card reveal" data-search="cuitlacoche peninsular canto ave endémica pardo">
+        <div class="plant-img-wrap">
+          <img src="Cuitlacoche peninsular animal.jpg" alt="Cuitlacoche Peninsular" loading="lazy"/>
+          <span class="plant-badge avistado-badge">Avistado</span>
+        </div>
+        <div class="plant-info">
+          <h3>Cuitlacoche Peninsular</h3>
+          <p class="plant-latin"><em>Toxostoma cinereum</em> · Ave</p>
+          <div class="desc-row">
+            <p class="plant-desc">Ave endémica con canto melodioso y variado. Habitante permanente del jardín, donde construye nidos entre los arbustos espinosos para protegerlos.</p>
+            <button class="tts-btn" aria-label="Escuchar descripción" onclick="ttsPlay(this)">🎧</button>
+          </div>
+          <div class="tts-volume-row">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+            <input type="range" class="tts-vol" min="0" max="1" step="0.05" value="1" oninput="setVol(this)"/>
+          </div>
+          <details>
+            <summary><span class="details-label">Datos curiosos</span><span class="details-arrow">▸</span></summary>
+            <ul><li>Puede imitar el canto de otras aves con gran precisión.</li><li>Construye nidos entre espinas para protegerlos de depredadores.</li><li>Se alimenta de insectos, semillas y frutos del jardín.</li></ul>
+          </details>
+        </div>
+      </article>
+
+      <article class="plant-card animal-card reveal" data-search="calandria palmera serrana amarilla naranja nido tejedor">
+        <div class="plant-img-wrap">
+          <img src="Calandria palmera y Calandria serrana animal.jpg" alt="Calandria" loading="lazy"/>
+          <span class="plant-badge avistado-badge">Avistada</span>
+        </div>
+        <div class="plant-info">
+          <h3>Calandria Palmera y Serrana</h3>
+          <p class="plant-latin"><em>Icterus parisorum / I. cucullatus</em> · Aves</p>
+          <div class="desc-row">
+            <p class="plant-desc">Dos especies con plumaje negro y amarillo-naranja avistadas en el jardín. Excelentes tejedoras de nidos colgantes que penden de palmas y ramas altas.</p>
+            <button class="tts-btn" aria-label="Escuchar descripción" onclick="ttsPlay(this)">🎧</button>
+          </div>
+          <div class="tts-volume-row">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+            <input type="range" class="tts-vol" min="0" max="1" step="0.05" value="1" oninput="setVol(this)"/>
+          </div>
+          <details>
+            <summary><span class="details-label">Datos curiosos</span><span class="details-arrow">▸</span></summary>
+            <ul><li>Sus nidos en forma de bolsa colgante tardan dos semanas en tejer.</li><li>Su canto es uno de los más musicales del desierto.</li><li>Se alimentan de néctar, insectos y frutos maduros del jardín.</li></ul>
+          </details>
+        </div>
+      </article>
+
+      <article class="plant-card animal-card reveal" data-search="tecolote buho cornudo nocturno rapaz silencioso">
+        <div class="plant-img-wrap">
+          <img src="Tecolote o Búho cornudo animal.jpg" alt="Tecolote Búho Cornudo" loading="lazy"/>
+          <span class="plant-badge avistado-badge">Avistado</span>
+        </div>
+        <div class="plant-info">
+          <h3>Tecolote / Búho Cornudo</h3>
+          <p class="plant-latin"><em>Bubo virginianus</em> · Ave rapaz nocturna</p>
+          <div class="desc-row">
+            <p class="plant-desc">El más grande de los búhos americanos, avistado de noche en el jardín. Sus plumas especializadas le permiten volar en silencio absoluto para cazar con precisión quirúrgica.</p>
+            <button class="tts-btn" aria-label="Escuchar descripción" onclick="ttsPlay(this)">🎧</button>
+          </div>
+          <div class="tts-volume-row">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+            <input type="range" class="tts-vol" min="0" max="1" step="0.05" value="1" oninput="setVol(this)"/>
+          </div>
+          <details>
+            <summary><span class="details-label">Datos curiosos</span><span class="details-arrow">▸</span></summary>
+            <ul><li>Sus ojos ven con casi total oscuridad.</li><li>Puede girar la cabeza 270 grados sin mover el cuerpo.</li><li>Principal regulador de roedores en el ecosistema desértico.</li></ul>
+          </details>
+        </div>
+      </article>
+
+    </div>
+  </div>
+
+  <!-- MAMÍFEROS Y REPTILES "solo poner especies que esten en la prepa"-->
+  <div class="animal-category reveal">
+    <div class="animal-category-header">
+      <span class="animal-cat-icon">🦎</span>
+      <h3>Mamíferos y Reptiles</h3>
+    </div>
+    <div class="plants-grid">
+
+      <article class="plant-card animal-card reveal" data-search="juancito ardillon mamifero roedor desierto">
+        <div class="plant-img-wrap">
+          <img src="Juancito o Ardillón animal.png" alt="Ardillón" loading="lazy"/>
+          <span class="plant-badge avistado-badge">Avistado</span>
+        </div>
+        <div class="plant-info">
+          <h3>Juancito / Ardillón</h3>
+          <p class="plant-latin"><em>Ammospermophilus insularis</em> · Mamífero</p>
+          <div class="desc-row">
+            <p class="plant-desc">Pequeño roedor de cola listada avistado frecuentemente entre las plantas del jardín. Activo de día y muy veloz, siempre alerta ante depredadores.</p>
+            <button class="tts-btn" aria-label="Escuchar descripción" onclick="ttsPlay(this)">🎧</button>
+          </div>
+          <div class="tts-volume-row">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+            <input type="range" class="tts-vol" min="0" max="1" step="0.05" value="1" oninput="setVol(this)"/>
+          </div>
+          <details>
+            <summary><span class="details-label">Datos curiosos</span><span class="details-arrow">▸</span></summary>
+            <ul><li>Puede almacenar semillas en sus carrillos para transportarlas.</li><li>Es un dispersor de semillas clave del ecosistema.</li><li>Sobrevive sin agua libre obteniendo humedad de su comida.</li></ul>
+          </details>
+        </div>
+      </article>
+
+      <article class="plant-card animal-card reveal" data-search="liebre cola negra veloz orejas mamifero desierto">
+        <div class="plant-img-wrap">
+          <img src="Liebre cola negra animal.jpg" alt="Liebre Cola Negra" loading="lazy"/>
+          <span class="plant-badge avistado-badge">Avistada</span>
+        </div>
+        <div class="plant-info">
+          <h3>Liebre Cola Negra</h3>
+          <p class="plant-latin"><em>Lepus californicus</em> · Mamífero</p>
+          <div class="desc-row">
+            <p class="plant-desc">Una de las liebres más grandes de Norteamérica. Sus enormes orejas actúan como radiadores que disipan el calor, permitiéndole sobrevivir temperaturas extremas del desierto.</p>
+            <button class="tts-btn" aria-label="Escuchar descripción" onclick="ttsPlay(this)">🎧</button>
+          </div>
+          <div class="tts-volume-row">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+            <input type="range" class="tts-vol" min="0" max="1" step="0.05" value="1" oninput="setVol(this)"/>
+          </div>
+          <details>
+            <summary><span class="details-label">Datos curiosos</span><span class="details-arrow">▸</span></summary>
+            <ul><li>Puede alcanzar velocidades de hasta 70 km/h.</li><li>Se alimenta de cactus, hierbas y arbustos desérticos.</li><li>Sus crías nacen completamente desarrolladas y con ojos abiertos.</li></ul>
+          </details>
+        </div>
+      </article>
+
+      <article class="plant-card animal-card reveal" data-search="rata canguro saltador nocturno roedor desierto">
+        <div class="plant-img-wrap">
+          <img src="Rata canguro animal.jpg" alt="Rata Canguro" loading="lazy"/>
+          <span class="plant-badge avistado-badge">Avistada</span>
+        </div>
+        <div class="plant-info">
+          <h3>Rata Canguro</h3>
+          <p class="plant-latin"><em>Dipodomys spp.</em> · Mamífero</p>
+          <div class="desc-row">
+            <p class="plant-desc">Roedor nocturno que se mueve a saltos como un canguro en miniatura. Sus patas traseras enormes y cola larga le dan equilibrio para escapar de depredadores nocturnos.</p>
+            <button class="tts-btn" aria-label="Escuchar descripción" onclick="ttsPlay(this)">🎧</button>
+          </div>
+          <div class="tts-volume-row">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+            <input type="range" class="tts-vol" min="0" max="1" step="0.05" value="1" oninput="setVol(this)"/>
+          </div>
+          <details>
+            <summary><span class="details-label">Datos curiosos</span><span class="details-arrow">▸</span></summary>
+            <ul><li>Puede saltar más de 2 metros en un brinco para escapar de serpientes.</li><li>Sus riñones son tan eficientes que casi nunca necesita beber agua.</li><li>Almacena semillas en cámaras subterráneas para época de escasez.</li></ul>
+          </details>
+        </div>
+      </article>
+
+      <article class="plant-card animal-card reveal" data-search="iguana desierto herbivora reptil calor lagartija grande">
+        <div class="plant-img-wrap">
+          <img src="Iguana del desierto (Dipsosaurus dorsalis) animal.jpg" alt="Iguana del Desierto" loading="lazy"/>
+          <span class="plant-badge avistado-badge">Avistada</span>
+        </div>
+        <div class="plant-info">
+          <h3>Iguana del Desierto</h3>
+          <p class="plant-latin"><em>Dipsosaurus dorsalis</em> · Reptil</p>
+          <div class="desc-row">
+            <p class="plant-desc">Lagarto especializado en tolerar temperaturas extremas. Una de las pocas lagartijas que puede forrajear activamente cuando el suelo supera los 40 °C.</p>
+            <button class="tts-btn" aria-label="Escuchar descripción" onclick="ttsPlay(this)">🎧</button>
+          </div>
+          <div class="tts-volume-row">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+            <input type="range" class="tts-vol" min="0" max="1" step="0.05" value="1" oninput="setVol(this)"/>
+          </div>
+          <details>
+            <summary><span class="details-label">Datos curiosos</span><span class="details-arrow">▸</span></summary>
+            <ul><li>Se alimenta de flores y hojas de gobernadora principalmente.</li><li>Es completamente herbívora en su etapa adulta.</li><li>Puede cambiar ligeramente de color para regular su temperatura.</li></ul>
+          </details>
+        </div>
+      </article>
+
+      <article class="plant-card animal-card reveal" data-search="lagarto cornudo camaleón sangre ojos defensa reptil">
+        <div class="plant-img-wrap">
+          <img src="Lagarto cornudo (Phrynosoma coronatum) animal.jpg" alt="Lagarto Cornudo" loading="lazy"/>
+          <span class="plant-badge avistado-badge">Avistado</span>
+        </div>
+        <div class="plant-info">
+          <h3>Lagarto Cornudo</h3>
+          <p class="plant-latin"><em>Phrynosoma coronatum</em> · Reptil</p>
+          <div class="desc-row">
+            <p class="plant-desc">Conocido como "camaleón", este lagarto achatado posee una defensa única: puede disparar sangre de sus ojos ante depredadores. Se alimenta principalmente de hormigas.</p>
+            <button class="tts-btn" aria-label="Escuchar descripción" onclick="ttsPlay(this)">🎧</button>
+          </div>
+          <div class="tts-volume-row">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+            <input type="range" class="tts-vol" min="0" max="1" step="0.05" value="1" oninput="setVol(this)"/>
+          </div>
+          <details>
+            <summary><span class="details-label">Datos curiosos</span><span class="details-arrow">▸</span></summary>
+            <ul><li>Puede disparar sangre de sus ojos hasta 1.5 metros de distancia.</li><li>Esta sangre contiene sustancias repelentes para coyotes y zorras.</li><li>Su camuflaje lo hace casi invisible sobre el suelo del desierto.</li></ul>
+          </details>
+        </div>
+      </article>
+
+      <article class="plant-card animal-card reveal" data-search="cachora arbol lagartija endémica azul troncos">
+        <div class="plant-img-wrap">
+          <img src="cachora de arbol animal.jpg" alt="Cachora de Árbol" loading="lazy"/>
+          <span class="plant-badge avistado-badge">Avistada</span>
+        </div>
+        <div class="plant-info">
+          <h3>Cachora de Árbol</h3>
+          <p class="plant-latin"><em>Urosaurus nigricaudus</em> · Reptil</p>
+          <div class="desc-row">
+            <p class="plant-desc">Pequeña lagartija arborícola endémica de Baja California. Se mueve con gran agilidad por troncos y ramas del jardín, donde se asolean para regular su temperatura.</p>
+            <button class="tts-btn" aria-label="Escuchar descripción" onclick="ttsPlay(this)">🎧</button>
+          </div>
+          <div class="tts-volume-row">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+            <input type="range" class="tts-vol" min="0" max="1" step="0.05" value="1" oninput="setVol(this)"/>
+          </div>
+          <details>
+            <summary><span class="details-label">Datos curiosos</span><span class="details-arrow">▸</span></summary>
+            <ul><li>Los machos muestran coloración azul brillante en el vientre para atraer hembras.</li><li>Se alimenta de insectos pequeños en troncos y ramas.</li><li>Puede cambiar de coloración según el sustrato donde descansa.</li></ul>
+          </details>
+        </div>
+      </article>
+
+      <article class="plant-card animal-card reveal" data-search="serpiente cascabel venenosa crotalus enyo baja california">
+        <div class="plant-img-wrap">
+          <img src="Serpiente de cascabel de Baja California (Crotalus enyo) animal.jpg" alt="Cascabel de BCS" loading="lazy"/>
+          <span class="plant-badge avistado-badge" style="background:rgba(160,30,30,0.85)">¡Precaución!</span>
+        </div>
+        <div class="plant-info">
+          <h3>Cascabel de Baja California</h3>
+          <p class="plant-latin"><em>Crotalus enyo</em> · Reptil</p>
+          <div class="desc-row">
+            <p class="plant-desc">Serpiente venenosa endémica avistada ocasionalmente. Pese a su veneno, es un predador esencial que regula las poblaciones de roedores del jardín.</p>
+            <button class="tts-btn" aria-label="Escuchar descripción" onclick="ttsPlay(this)">🎧</button>
+          </div>
+          <div class="tts-volume-row">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+            <input type="range" class="tts-vol" min="0" max="1" step="0.05" value="1" oninput="setVol(this)"/>
+          </div>
+          <details>
+            <summary><span class="details-label">Datos curiosos</span><span class="details-arrow">▸</span></summary>
+            <ul><li>El cascabel son segmentos de queratina que crecen con cada muda.</li><li>Detecta el calor corporal con órganos especiales entre sus ojos.</li><li>Si la avistas en el jardín, guarda distancia y no la molestes.</li></ul>
+          </details>
+        </div>
+      </article>
+
+    </div>
+  </div>
+
+  <!-- INSECTOS Y ARÁCNIDOS "solo poner especies que esten en la prepa"-->
+  <div class="animal-category reveal">
+    <div class="animal-category-header">
+      <span class="animal-cat-icon">🦂</span>
+      <h3>Insectos y Arácnidos</h3>
+    </div>
+    <div class="plants-grid">
+
+      <article class="plant-card animal-card reveal" data-search="alacran escorpion desierto veneno arácnido nocturno UV">
+        <div class="plant-img-wrap">
+          <img src="Alacrán del desierto animal.jpg" alt="Alacrán del Desierto" loading="lazy"/>
+          <span class="plant-badge avistado-badge" style="background:rgba(140,80,0,0.85)">Arácnido</span>
+        </div>
+        <div class="plant-info">
+          <h3>Alacrán del Desierto</h3>
+          <p class="plant-latin"><em>Centruroides spp.</em> · Arácnido</p>
+          <div class="desc-row">
+            <p class="plant-desc">Habitante nocturno del jardín. El alacrán es un controlador natural de insectos y un sobreviviente evolutivo que ha permanecido casi sin cambios por más de 400 millones de años.</p>
+            <button class="tts-btn" aria-label="Escuchar descripción" onclick="ttsPlay(this)">🎧</button>
+          </div>
+          <div class="tts-volume-row">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+            <input type="range" class="tts-vol" min="0" max="1" step="0.05" value="1" oninput="setVol(this)"/>
+          </div>
+          <details>
+            <summary><span class="details-label">Datos curiosos</span><span class="details-arrow">▸</span></summary>
+            <ul><li>Ha sobrevivido casi sin cambios por más de 400 millones de años.</li><li>Brilla bajo luz ultravioleta: visible de noche con lámpara UV.</li><li>La hembra carga a sus crías sobre la espalda durante semanas.</li></ul>
+          </details>
+        </div>
+      </article>
+
+    </div>
+  </div>
+
+</section>
+
+  <!--
+     UBICACIÓN "por ahi"
+  -->
+<section class="section ubicacion" id="ubicacion">
+  <div class="section-header reveal">
+    <span class="tag">¿Dónde estamos?</span>
+    <h2>Ubicación</h2>
+    <p class="section-desc">COBACH Plantel 01 · La Paz, Baja California Sur, México</p>
+  </div>
+  <div class="map-container reveal">
+    <iframe
+      title="Mapa COBACH 01 La Paz"
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3628.1234!2d-110.3127!3d24.1426!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86afd2f0f4e3e22b%3A0x9c5a1c3a4f0c8f7b!2sCOBACH%20Plantel%2001%20La%20Paz!5e0!3m2!1ses!2smx!4v1700000000000"
+      width="100%" height="480" style="border:0;"
+      allowfullscreen="" loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+</section>
+
+<!--
+     CONTACTO "por ahi"
+  --> 
+
+<section class="section contacto" id="contacto">
+  <div class="section-inner two-col-contact">
+    <div class="contact-text reveal">
+      <span class="tag">Escríbenos</span>
+      <h2>Contáctenos</h2>
+      <p>¿Tienes preguntas sobre el jardín, quieres visitar o colaborar? Mándanos un mensaje.</p>
+      <ul class="contact-info">
+        <li>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Colonia 8 de octubre, La Paz, BCS, México. Cobach 01, Jardín Botánico
+        </li>
+        <li>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          (612) 121-1801
+        </li>
+        <li>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          plantel01@cobachbcs.edu.mx
+        </li>
+      </ul>
+    </div>
+    <form class="contact-form reveal" onsubmit="submitForm(event)">
+      <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" placeholder="Tu nombre completo" required/>
+      </div>
+      <div class="form-group">
+        <label for="email">Correo electrónico</label>
+        <input type="email" id="email" placeholder="correo@ejemplo.com" required/>
+      </div>
+      <div class="form-group">
+        <label for="mensaje">Mensaje</label>
+        <textarea id="mensaje" rows="5" placeholder="¿En qué podemos ayudarte?" required></textarea>
+      </div>
+      <button type="submit" class="submit-btn">
+        <span>Enviar mensaje</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+      </button>
+      <p class="form-note" id="formNote"></p>
+    </form>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="Logotipo_COBACH.png" alt="COBACH" class="footer-logo"/>
+      <p>Jardín Botánico<br>COBACH 01 BCS</p>
+    </div>
+    <div class="footer-links">
+      <a href="#nosotros">Nosotros</a>
+      <a href="#jardin">Jardín</a>
+      <a href="#animales">Animales</a>
+      <a href="#ubicacion">Ubicación</a>
+      <a href="#contacto">Contáctenos</a>
+    </div>
+    <p class="footer-copy">© 2026 COBACH Plantel 01 · La Paz, Baja California Sur</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

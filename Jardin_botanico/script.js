@@ -42,8 +42,10 @@ document.querySelectorAll('.reveal').forEach((el, i) => {
    el boton funciona con magia, es una libreria que tome por ahi, nisiquiera se quien la hizo como para dar creditos xd, pero funciona bastante bien, el texto que lee se compone del titulo de la carta, la descripción y los datos curiosos (si es que tiene), el volumen se puede controlar con el slider que esta en cada carta, y si cambias el volumen mientras esta leyendo se actualiza al instante, si cambias de pestaña o recargas la pagina mientras esta leyendo se detiene automaticamente para no seguir hablando a lo loco, en fin, es una función bastante completa y util para personas con discapacidad visual o para los que prefieren escuchar en lugar de leer, espero que les guste y le saquen provecho, saludos.
 ══════════════════════════════════════════════ */
 
-let currentUtterance = null;  // utterance currently speaking
-let currentBtn       = null;  // button currently active
+let currentBtn  = null;   // botón que está activo ahorita
+let currentCard = null;   // carta que se está leyendo
+let currentVol  = 1;      // volumen actual (se guarda para reiniciar si cambia)
+let currentText = '';     // texto actual (para reiniciar desde el principio si cambia volumen)
 
 /**
  * Build the full text to read from a card:
@@ -68,32 +70,32 @@ function buildCardText(card) {
 }
 
 /**
- * Called by each 🎧 button's onclick="ttsPlay(this)"
- * Stops any ongoing speech first; if a different card was
- * playing it just stops. If this same card was playing, stops
- * (toggle off). Otherwise starts reading this card.
+ * Limpia el estado visual del botón que estaba activo
+ */
+function clearBtnState(btn) {
+  if (!btn) return;
+  btn.classList.remove('playing');
+  btn.textContent = '🎧';
+  btn.title = 'Escuchar descripción';
+}
+
+/**
+ * Para todo el audio y resetea el estado global
+ */
+function stopTTS() {
+  window.speechSynthesis.cancel();
+  clearBtnState(currentBtn);
+  currentBtn  = null;
+  currentCard = null;
+  currentText = '';
+}
+
+/**
+ * Inicia la lectura de un texto con un volumen dado,
+ * y amarra los callbacks al botón que la activó.
  * wooow no tengo ni la menor idea de como comprar estos parametros ME ESTOY VOLVIENDO LOKO
  */
-function ttsPlay(btn) {
-  const isSameBtn = (btn === currentBtn);
-
-  // always stop whatever is playing
-  stopTTS();
-
-  // if we clicked the same button that was already playing → toggle off, done No tocar, lo aprendi a la mala :c
-  if (isSameBtn) return;
-
-  // find the parent card osea que solo la busca para leer
-  const card = btn.closest('.plant-card');
-  if (!card) return;
-
-  const text = buildCardText(card);
-  if (!text) return;
-
-  // respect the volume slider that lives in this card "esto no funciona, de echo me quiero dar 20 tiros"
-  const volInput = card.querySelector('.tts-vol');
-  const volume   = volInput ? parseFloat(volInput.value) : 1;
-
+function startSpeech(text, volume, btn) {
   const utter = new SpeechSynthesisUtterance(text);
   utter.lang   = 'es-MX';
   utter.volume = volume;
@@ -103,46 +105,94 @@ function ttsPlay(btn) {
   utter.onstart = () => {
     currentBtn = btn;
     btn.classList.add('playing');
-    btn.title = 'Pausar lectura';
+    btn.textContent = '⏹';
+    btn.title = 'Detener lectura';
   };
 
   utter.onend = utter.onerror = () => {
-    clearBtnState(btn);
-    currentUtterance = null;
-    currentBtn       = null;
+    // solo limpia si este utterance sigue siendo el activo
+    // (evita limpiar si ya empezó otro)
+    if (currentBtn === btn) {
+      clearBtnState(btn);
+      currentBtn  = null;
+      currentCard = null;
+      currentText = '';
+    }
   };
 
-  currentUtterance = utter;
   window.speechSynthesis.speak(utter);
 }
 
-function stopTTS() {
-  if (window.speechSynthesis.speaking || window.speechSynthesis.pending) {
-    window.speechSynthesis.cancel();
-  }
-  if (currentBtn) {
-    clearBtnState(currentBtn);
-    currentBtn = null;
-  }
-  currentUtterance = null;
-}
+/**
+ * Called by each 🎧 button's onclick="ttsPlay(this)"
+ * Stops any ongoing speech first; if a different card was
+ * playing it just stops. If this same card was playing, stops
+ * (toggle off). Otherwise starts reading this card.
+ */
+function ttsPlay(btn) {
+  const isSameBtn = (btn === currentBtn);
 
-function clearBtnState(btn) {
-  btn.classList.remove('playing');
-  btn.title = 'Escuchar descripción';
+  // siempre cancela lo que sea que esté sonando
+  stopTTS();
+
+  // si le diste click al mismo botón que ya estaba sonando → toggle off, ya terminó
+  if (isSameBtn) return;
+
+  // busca la carta padre
+  const card = btn.closest('.plant-card');
+  if (!card) return;
+
+  const text = buildCardText(card);
+  if (!text) return;
+
+  // lee el volumen del slider de ESA carta
+  const volInput = card.querySelector('.tts-vol');
+  const volume   = volInput ? parseFloat(volInput.value) : 1;
+
+  // guarda el estado global antes de hablar
+  currentCard = card;
+  currentText = text;
+  currentVol  = volume;
+
+  startSpeech(text, volume, btn);
 }
 
 /**
  * Volume slider — live update while speaking "Gracias desconocido por hacer el codigo que robe y que otro me robara eventualmente"
+ * NOTA: la Web Speech API no permite cambiar el volumen de una utterance
+ * que ya está reproduciendo (la propiedad es de solo lectura una vez iniciada).
+ * La única solución real es cancelar y reiniciar desde el principio con el nuevo volumen.
+ * Eso hace que se corte una fracción de segundo — es inevitable con esta API.
  */
 function setVol(rangeInput) {
-  if (currentUtterance && currentBtn) {
-    // find if this slider belongs to the currently speaking card
-    const card = rangeInput.closest('.plant-card');
-    if (card && card.contains(currentBtn)) {
-      currentUtterance.volume = parseFloat(rangeInput.value);
-    }
+  const newVol = parseFloat(rangeInput.value);
+
+  // si no hay nada sonando, solo guarda el valor para cuando empiece
+  if (!currentBtn || !currentCard) {
+    currentVol = newVol;
+    return;
   }
+
+  // verifica que este slider sea de la carta que está sonando
+  const card = rangeInput.closest('.plant-card');
+  if (card !== currentCard) return;
+
+  // guarda referencias ANTES de cancelar, porque cancel() dispara onend
+  // que limpia las variables globales — si no las guardamos aquí las perdemos
+  const btn  = currentBtn;
+  const text = currentText;
+  currentVol = newVol;
+
+  // pone currentBtn en null ANTES del cancel para que onend no limpie el botón visualmente
+  // (el botón ya está en ⏹, no queremos que regrese a 🎧 mientras reinicia)
+  currentBtn  = null;
+  currentCard = null;
+  currentText = '';
+
+  window.speechSynthesis.cancel();
+  setTimeout(() => {
+    startSpeech(text, newVol, btn);
+  }, 80);
 }
 
 // Stop TTS if user navigates away
@@ -264,7 +314,7 @@ function jumpTo(card) {
 }
 
 /* ══════════════════════════════════════════════
-   formato de contacto, solo visual, en realidad no esta conectado a nada xdxdxdxdxdxdxdxxdxdxdxdxdxdxdxxdxdxdxdxdxdxdxxdxdxdxdxdxdxdxxdxdxdxdxdxdxdxxdxdxdxdxdxdxdxxdxdxdxdxdxdxdxxdxdxdxdxdxdxdxxdxdxdxdxdxdxdxxdxdxdxdxdxdxdxxdxdxdxdxdxdxdxxdxdxdxdxdxdxdxxdxdxdxdxdxdxdxxdxdxdxdxdxdxdx
+   formato de contacto, solo visual, en realidad no esta conectado a nada xdxdxdxdxdxdxdxxdxdxdxdxdxdxdxxdxdxdxdxdxdxdxxdxdxdxdxdxdxdxxdxdxdxdxdxdxdxxdxdxdxdxdxdxdxxdxdxdxdxdxdxdxxdxdxdxdxdxdxdxxdxdxdxdxdxdxdxxdxdxdxdxdxdxdxxdxdxdxdxdxdxdxxdxdxdxdxdxdxdxxdxdxdxdxdxdxdxxdxdxdxdxdxdxdxxdxdxdxdxdxdxdx
 ══════════════════════════════════════════════ */
 function submitForm(e) {
   e.preventDefault();
